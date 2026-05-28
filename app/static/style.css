@@ -1,0 +1,352 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Mrs+Saint+Delafield&display=swap');
+
+:root {
+    --primary: #0f172a; /* Deep Slate */
+    --accent-teal: #26bdc9; /* From Logo Wing */
+    --accent-orange: #fdbb34; /* From Logo Wing High */
+    --accent-red: #ec5432; /* From Logo Wing Mid */
+    --background: #f8fafc;
+    --sidebar: #0f172a;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border: #e2e8f0;
+    --white: #ffffff;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-main);
+    display: flex;
+    min-height: 100vh;
+}
+
+h1, h2, h3, .logo {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    width: 400px;
+    background: var(--sidebar);
+    color: white;
+    padding: 2.5rem;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+}
+
+.logo-container img {
+    width: 32px;
+    height: 32px;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.sidebar h3 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* Main Content Layout */
+.main-content {
+    flex: 1;
+    height: 100vh;
+    padding: 3rem 1rem; /* More space for the page to breathe */
+    overflow-y: auto; /* Allow scrolling the entire document */
+    background: #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #f8fafc;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: #1e293b;
+    box-shadow: 0 0 0 3px rgba(17, 94, 89, 0.2);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(to right, var(--accent-teal), var(--accent-red));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 6px rgba(38, 189, 201, 0.2);
+}
+
+.btn-primary:hover {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 12px rgba(38, 189, 201, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+/* Document Page Styling (Preview) */
+.document-page {
+    background: var(--white);
+    width: 800px;
+    min-height: 297mm;
+    height: auto;
+    margin: 4rem auto;
+    padding: 0;
+    box-shadow: 0 40px 100px -20px rgba(0,0,0,0.1);
+    position: relative;
+    border-radius: 4px; /* More professional sharp corner */
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+}
+
+/* Letterhead Header */
+.letterhead {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 70%, var(--accent-orange) 100%);
+    padding: 3.5rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.letterhead .logo-container img {
+    width: 90px;
+    height: 90px;
+    /* Blend logo if it has a white background */
+    mix-blend-mode: multiply; 
+    background: transparent;
+    object-fit: contain;
+}
+
+.letterhead .company-info {
+    text-align: right;
+}
+
+.letterhead .company-info h2 {
+    color: white;
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.letterhead .company-info p {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+}
+
+.document-body-container {
+    padding: 4rem 5rem 2rem 5rem; /* Tighter bottom padding since footer is now joint */
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--white);
+}
+
+/* Watermark */
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.03;
+    width: 400px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.document-title {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    position: relative;
+    z-index: 1;
+}
+
+.recipient-block {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.recipient-info p {
+    margin: 0.25rem 0;
+    font-weight: 500;
+}
+
+.letter-body {
+    font-size: 11pt; /* Slightly smaller for long content */
+    color: #334155;
+    line-height: 1.6;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+/* Markdown Support */
+.letter-body strong {
+    color: #000;
+}
+
+.letter-body p {
+    margin-bottom: 1.25rem;
+}
+
+.signature-block {
+    margin-top: 5rem;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 2rem;
+}
+
+.signature-text {
+    font-family: 'Mrs Saint Delafield', cursive;
+    font-size: 4rem;
+    color: var(--primary);
+    margin: 0.5rem 0 0 0.5rem; /* Removed negative margins to stop clipping */
+    transform: rotate(-3deg);
+    user-select: none;
+    opacity: 0.95;
+    line-height: 0.8;
+}
+
+.signature-img {
+    width: 150px;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+/* Professional Colorful & Joint Footer */
+.document-footer {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+    color: white;
+    padding: 3.5rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: none;
+    margin-top: 0; /* SEAMLESSLY JOINT */
+}
+
+.footer-contact span {
+    color: rgba(255,255,255,0.9);
+    font-weight: 500;
+}
+
+.footer-contact {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.85rem;
+}
+
+.footer-contact span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Print Specifics */
+@media print {
+    body {
+        background: white;
+    }
+    .sidebar {
+        display: none !important;
+    }
+    .main-content {
+        padding: 0;
+        background: white;
+    }
+    .document-page {
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+    }
+}
+
+/* Navigation Links Style (Optional decorative) */
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}

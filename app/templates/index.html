@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRflow AI | Enterprise Document Management</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Sidebar: Controls & Branding -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <img src="/static/logo.png" alt="HRflow Logo">
+            <span class="logo-text">HRflow AI</span>
+        </div>
+
+        <h3>Configuration</h3>
+        <form id="docForm">
+            <div class="form-group">
+                <label for="document_type">Document Type</label>
+                <select id="document_type" name="document_type" required>
+                    <option value="Offer Letter">Offer Letter</option>
+                    <option value="Experience Certificate">Experience Certificate</option>
+                    <option value="Internship Certificate">Internship Certificate</option>
+                    <option value="Appreciation Letter">Appreciation Letter</option>
+                    <option value="Relieving Letter">Relieving Letter</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Recipient Full Name</label>
+                <input type="text" id="name" name="name" placeholder="e.g. Aryan Sharma" required>
+            </div>
+
+            <div class="form-group">
+                <label for="position">Designation / Role</label>
+                <input type="text" id="position" name="position" placeholder="e.g. Senior Software Engineer" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Issuing Entity (Company)</label>
+                <input type="text" id="company" name="company" value="Prakriti Enterprise" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                <div class="form-group">
+                    <label for="start_date">Start Date</label>
+                    <input type="date" id="start_date" name="start_date" required>
+                </div>
+                <div class="form-group">
+                    <label for="end_date">End Date</label>
+                    <input type="date" id="end_date" name="end_date">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="salary">Compensation Pack (CTC)</label>
+                <input type="text" id="salary" name="salary" placeholder="e.g. ₹2,400,000 P.A." value="N/A">
+            </div>
+
+            <div class="form-group">
+                <label for="notes">Performance Notes / Details</label>
+                <textarea id="notes" name="notes" rows="4" placeholder="Brief summary of contributions..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" id="generateBtn">Generate AI Document</button>
+        </form>
+
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+            <button class="btn-primary" style="background: rgba(255,255,255,0.05); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.1);" onclick="window.print()">
+                Print to Official PDF
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content: Professional Preview Area -->
+    <main class="main-content">
+        <div class="document-page" id="printable_doc">
+            <!-- Official Letterhead -->
+            <header class="letterhead">
+                <div class="logo-container">
+                    <img src="/static/logo.png" alt="Prakriti Logo">
+                    <div>
+                        <h1 id="header_company_name" style="font-size: 2rem; margin: 0; color: white;">Prakriti Enterprise</h1>
+                        <span style="font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; text-transform: uppercase; letter-spacing: 0.2em;">Excellence in Nature</span>
+                    </div>
+                </div>
+                <div class="company-info">
+                    <h2>Corporate HQ</h2>
+                    <p>456 Green Valley, Eco Park</p>
+                    <p>Mumbai, MH 400001</p>
+                    <p>www.prakritienterprise.com</p>
+                </div>
+            </header>
+
+            <!-- Document Content Container -->
+            <div class="document-body-container">
+                <img src="/static/logo.png" class="watermark" alt="Watermark">
+                
+                <h1 class="document-title" id="doc_title">Job Offer Letter</h1>
+
+                <div class="recipient-block">
+                    <div class="recipient-info">
+                        <p>To:</p>
+                        <p style="font-size: 1.25rem; font-weight: 700;" id="preview_name">Recipient Name</p>
+                        <p id="preview_address">123 Anywhere St., Any City</p>
+                    </div>
+                    <div class="date-info">
+                        <p id="preview_date">June 10, 2030</p>
+                    </div>
+                </div>
+
+                <!-- Document Content -->
+                <div id="preview" class="letter-body">
+                    <div style="text-align: center; color: var(--text-muted); margin-top: 50px; opacity: 0.5;">
+                        <p>Generate a document to see the preview here.</p>
+                    </div>
+                </div>
+
+                <!-- Digital Signature -->
+                <div class="signature-block">
+                    <p style="margin-bottom: 2.5rem; font-weight: 500;">With best wishes,</p>
+                    <div id="signature_area" style="text-align: left;">
+                        <!-- High-end Cursive Signature Font -->
+                        <div class="signature-text" id="signature_font_area">Pooja Maru</div>
+                        
+                        <p style="font-weight: 800; font-size: 1.1rem; color: var(--primary); margin-top: 0.5rem;" id="signatory_name">Pooja Maru</p>
+                        <p style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Director, Prakriti Enterprise</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Footer -->
+            <footer class="document-footer">
+                <div class="footer-contact">
+                    <span>📞 +91 98765 43210</span>
+                    <span>✉️ hello@prakritienterprise.com</span>
+                    <span>🌐 www.prakritienterprise.com</span>
+                </div>
+                <div style="font-size: 0.75rem; opacity: 0.6;">
+                    ID: <span id="doc_id">PRK-2024-8842</span>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
